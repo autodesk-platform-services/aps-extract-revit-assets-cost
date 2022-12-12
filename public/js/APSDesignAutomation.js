@@ -1,6 +1,6 @@
 ﻿/////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
+// Written by Autodesk Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -146,7 +146,7 @@ class AssetManager {
       DuctTerminal: true
     };
     try {
-      const requestUrl = '/api/forge/da4revit/revit/' + encodeURIComponent(this.currentModelNode.storage) + '/assets';
+      const requestUrl = '/api/aps/da4revit/revit/' + encodeURIComponent(this.currentModelNode.storage) + '/assets';
       this.assetInfo = await apiClientAsync(requestUrl, inputJson);
       this.workingItem = this.assetInfo.workItemId;
       return true;
@@ -165,7 +165,7 @@ class AssetManager {
     // find categores
     let categories = null;
     try{
-      const requestUrl = '/api/forge/bim360/projects/' + encodeURIComponent(this.projectId) + '/categories';
+      const requestUrl = '/api/aps/bim360/projects/' + encodeURIComponent(this.projectId) + '/categories';
       categories = await apiClientAsync(requestUrl);
     }catch(ex){
       console.error('Exception to get categories');   
@@ -175,7 +175,7 @@ class AssetManager {
     // find status set
     let statusSets = null;
     try{
-      const requestUrl = '/api/forge/bim360/projects/' + encodeURIComponent(this.projectId) + '/status-sets';
+      const requestUrl = '/api/aps/bim360/projects/' + encodeURIComponent(this.projectId) + '/status-sets';
       statusSets = await apiClientAsync(requestUrl);
     }catch(ex){
       console.error('Exception to get status sets');    
@@ -201,7 +201,7 @@ class AssetManager {
           } 
           else { // create a category if not existing
             try {
-              const requestUrl = '/api/forge/bim360/projects/' + encodeURIComponent(this.projectId) + '/categories';
+              const requestUrl = '/api/aps/bim360/projects/' + encodeURIComponent(this.projectId) + '/categories';
               const requestBody = {
                 parentId: categories[0].id,
                 name: asset[key]
@@ -231,7 +231,7 @@ class AssetManager {
     }
 
     try {
-      const requestUrl = '/api/forge/da4revit/bim360/assets';
+      const requestUrl = '/api/aps/da4revit/bim360/assets';
       const requestBody = {
         project_id: this.projectId,
         data: assetList

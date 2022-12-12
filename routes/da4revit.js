@@ -1,6 +1,6 @@
 /////////////////////////////////////////////////////////////////////
 // Copyright (c) Autodesk, Inc. All rights reserved
-// Written by Forge Partner Development
+// Written by Autodesk Partner Development
 //
 // Permission to use, copy, modify, and distribute this software in
 // object code form for any purpose and without fee is hereby granted,
@@ -38,9 +38,11 @@ router.use(async (req, res, next) => {
     let credentials = await oauth.getInternalToken();
     let oauth_client = oauth.getClient();
 
-    req.oauth_client = oauth_client;
-    req.oauth_token = credentials;
-    next();
+    if(credentials ){
+        req.oauth_client = oauth_client;
+        req.oauth_token = credentials;
+        next();
+    }
 });
 
 
@@ -66,7 +68,7 @@ router.get('/da4revit/revit/:version_storage/assets', async (req, res, next) => 
         Headers: {
             'Content-Type': 'application/json'
         },
-        url: `${designAutomation.app_base_domain}/api/forge/da4revit/file`
+        url: `${designAutomation.app_base_domain}/api/aps/da4revit/file`
     };
     const workItemSpec = {
         activityId: `${Utils.NickName}.${Utils.ActivityName}+${Utils.Alias}`,
@@ -76,10 +78,11 @@ router.get('/da4revit/revit/:version_storage/assets', async (req, res, next) => 
             outputJson: outputJsonArgument,
             onComplete: {
                 verb: 'post',
-                url: `${designAutomation.app_base_domain}/api/forge/callback/designautomation`
+                url: `${designAutomation.app_base_domain}/api/aps/callback/designautomation`
             }
         }
     };
+    console.log(workItemSpec);
     // use 2 legged token for design automation
     const oauth = new OAuth(req.session);
     const oauth_client = oauth.get2LeggedClient();;
