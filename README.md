@@ -71,8 +71,11 @@ Mac OSX/Linux (Terminal)
     npm install
     export APS_CLIENT_ID=<<YOUR CLIENT ID FROM DEVELOPER PORTAL>>
     export APS_CLIENT_SECRET=<<YOUR CLIENT SECRET>>
-    export APS_SERVER_DOMAIN=<<YOUR SERVER URL>>
-    export APS_WEBHOOK_URL=<<YOUR DESIGN AUTOMATION FOR REVIT CALLBACK URL>>
+    export APS_CALLBACK_URL=<<YOUR CALLBACK URL>>
+    export APS_SERVER_DOMAIN=<<YOUR DESIGN AUTOMATION FOR REVIT CALLBACK URL>>
+    export DESIGN_AUTOMATION_NICKNAME=<<YOUR DESIGN AUTOMATION FOR REVIT NICK NAME>>
+    export DESIGN_AUTOMATION_ACTIVITY_NAME=<<YOUR DESIGN AUTOMATION FOR REVIT ACTIVITY NAME>>
+    export DESIGN_AUTOMATION_ACTIVITY_ALIAS=<<YOUR DESIGN AUTOMATION FOR REVIT ACTIVITY ALIAS>>    
 
     npm start
 
@@ -81,9 +84,23 @@ Windows (use **Node.js command line** from Start menu)
     npm install
     set APS_CLIENT_ID=<<YOUR CLIENT ID FROM DEVELOPER PORTAL>>
     set APS_CLIENT_SECRET=<<YOUR CLIENT SECRET>>
-    set APS_SERVER_DOMAIN=<<YOUR SERVER URL>>
-    set APS_WEBHOOK_URL=<<YOUR DESIGN AUTOMATION FOR REVIT CALLBACK URL>>
+    set APS_CALLBACK_URL=<<YOUR CALLBACK URL>>
+    set APS_SERVER_DOMAIN=<<YOUR DESIGN AUTOMATION FOR REVIT CALLBACK URL>>
+    set DESIGN_AUTOMATION_NICKNAME=<<YOUR DESIGN AUTOMATION FOR REVIT NICK NAME>>
+    set DESIGN_AUTOMATION_ACTIVITY_NAME=<<YOUR DESIGN AUTOMATION FOR REVIT ACTIVITY NAME>>
+    set DESIGN_AUTOMATION_ACTIVITY_ALIAS=<<YOUR DESIGN AUTOMATION FOR REVIT ACTIVITY ALIAS>>
     npm start
+
+**Note.**
+environment variable examples:
+- APS_CALLBACK_URL: `http://localhost:3000/api/aps/callback/oauth`
+- APS_WEBHOOK_URL: `http://808efcdc123456.ngrok.io/api/aps/callback/designautomation`
+
+The following are optional:
+- DESIGN_AUTOMATION_NICKNAME: Only necessary if there is a nickname, APS client id by default.
+- DESIGN_AUTOMATION_ACTIVITY_NAME: Only necessary if the activity name is customized, ExtractAssetsActivity by default.
+- DESIGN_AUTOMATION_ACTIVITY_ALIAS: Only necessary if the activity alias is customized, dev by default.
+
 
 ## Using the app
 

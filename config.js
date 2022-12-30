@@ -55,8 +55,8 @@ module.exports = {
     designAutomation:{
         app_base_domain: process.env.APS_SERVER_DOMAIN,
         // the following environment variables are only required to define if you want to use your own predefined activity
-        alias:           process.env.DESIGN_AUTOMATION_ALIAS,
-        nick_name:       process.env.DESIGN_AUTOMATION_NICKNAME,
-        activity_name:   process.env.DESIGN_AUTOMATION_ACTIVITY_NAME
+        nickname:       process.env.DESIGN_AUTOMATION_NICKNAME?process.env.DESIGN_AUTOMATION_NICKNAME:process.env.APS_CLIENT_ID,
+        activity_name:  process.env.DESIGN_AUTOMATION_ACTIVITY_NAME?process.env.DESIGN_AUTOMATION_ACTIVITY_NAME:"ExtractAssetsActivity",
+        alias:          process.env.DESIGN_AUTOMATION_ACTIVITY_ALIAS?process.env.DESIGN_AUTOMATION_ACTIVITY_ALIAS:'dev'
     }
 };
